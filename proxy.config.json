@@ -1,0 +1,20 @@
+{
+  "/enviserver/measurements": {
+    "target": "http://localhost:8080",
+    "secure": true,
+    "logLevel": "info",
+    "changeOrigin": true
+  },
+  "/enviserver/alerts": {
+    "target": "http://localhost:8080",
+    "secure": true,
+    "logLevel": "info",
+    "changeOrigin": true
+  },
+  "/enviserver/sensors": {
+    "target": "http://localhost:8080",
+    "secure": true,
+    "logLevel": "info",
+    "changeOrigin": true
+  }
+}

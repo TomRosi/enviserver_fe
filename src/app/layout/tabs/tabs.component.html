@@ -1,0 +1,11 @@
+<p-tabView #tabView (onChange)="changeTab($event)" [(activeIndex)]="selectedTabIndex">
+  <p-tabPanel header="Alerts">
+    <router-outlet name="alertsRouterOutlet"></router-outlet>
+  </p-tabPanel>
+  <p-tabPanel header="Measurements">
+    <router-outlet name="measurementsRouterOutlet"></router-outlet>
+  </p-tabPanel>
+  <p-tabPanel header="Sensors">
+    <router-outlet name="sensorsRouterOutlet"></router-outlet>
+  </p-tabPanel>
+</p-tabView>

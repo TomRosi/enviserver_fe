@@ -1,0 +1,25 @@
+<p-table [value]="tableData.data$ | async" [lazy]="true" (sortFunction)="sort($event)">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>
+        <p-checkbox label="All"></p-checkbox>
+      </th>
+      <th *ngFor="let col of tableData.cols" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}">
+        {{col.header}}
+        <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                    ariaLabelDesc="Activate to sort in descending order"
+                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>
+        <p-checkbox></p-checkbox>
+      </td>
+      <td *ngFor="let col of tableData.cols" [ngStyle]="col.useStyle ? data.temperatureStyle : null">
+        {{data[col.field]}}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

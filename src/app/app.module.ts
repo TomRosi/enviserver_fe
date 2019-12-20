@@ -1,18 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { FluidModule } from '@app/layout/fluid/fluid.module';
+import {BaseModule} from "@app/layout/base/base.module";
+import {AuthGuard} from "@app/core/auth.guard";
+import {CoreAuth} from "@app/core/core.auth";
+import {CookieService} from "ngx-cookie-service";
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FluidModule,
+    BaseModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    CoreAuth,
+    AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "test",
+      "fullName": "Test Test",
+      "password": "test",
+      "year": 2019,
+      "role": "ROLE_ADMIN"
+    }
+  ],
+  "sensors": [
+    {
+      "id": 1,
+      "uuid": "fc8ba70e-5936-4b44-b528-9e3b353405d9",
+      "name": "My Sensor 1",
+      "location": "indoor",
+      "minTemperature": 20,
+      "maxTemperature": 25
+    },
+    {
+      "id": 5,
+      "uuid": "fc8ba70e-5936-4b44-b528-9e3b353405d9",
+      "name": "My Sensor 1",
+      "location": "indoor",
+      "minTemperature": 12,
+      "maxTemperature": 28
+    },
+    {
+      "id": 4,
+      "uuid": "ac8ba70e-5936-4b44-b528-9e3b353405d9",
+      "name": "My Sensor 1",
+      "location": "indoor",
+      "minTemperature": 12,
+      "maxTemperature": 25
+    },
+    {
+      "id": 2,
+      "uuid": "vc8ba70e-5936-4b44-b528-9e3b353405d9",
+      "name": "My Sensor 1",
+      "location": "indoor",
+      "minTemperature": 25,
+      "maxTemperature": 12
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+<div class="filter-wrap">
+  <div class="row">
+    <div class="col">
+      <h4>Filter</h4>
+    </div>
+  </div>
+  <div class="row title">
+    <div class="col">
+      <h5>Temperature</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col filter">
+      <label for="fromTemperature">Lowest temperature</label>
+      <input type="number" pInputText id="fromTemperature" name="fromTemperature">
+    </div>
+    <div class="col filter">
+      <label for="fromTemperature">Highest temperature</label>
+      <input type="number" pInputText id="toTemperature" name="toTemperature">
+    </div>
+  </div>
+  <div class="row title">
+    <div class="col">
+      <h5>Date and time</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col filter">
+      <p-calendar showTime="true" hourFormat="24" dateFormat="dd.mm.yy"></p-calendar>
+    </div>
+  </div>
+  <div class="row title">
+    <div class="col">
+      <h5>UUID</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col filter">
+      <p-checkbox name="selectAllUuid" value="all" label="All"></p-checkbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col filter">
+      <p-dropdown [options]="uuidOptions" placeholder="Select name (UUID)"></p-dropdown>
+    </div>
+  </div>
+  <div class="row buttons-group">
+    <div class="col filter">
+      <button pButton type="reset" label="Reset"></button>
+    </div>
+    <div class="col filter">
+      <button pButton type="submit" label="Submit"></button>
+    </div>
+  </div>
+</div>
