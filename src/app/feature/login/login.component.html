@@ -1,9 +1,15 @@
 <div class="d-flex justify-content-center align-items-center h-100">
-  <form #loginForm="ngForm">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
     <p-panel header="ENVI SERVER" styleClass="rounded-circle">
-      <input class="d-block mb-2 form-control" type="text" pInputText placeholder="Username" size="30" required [(ngModel)]="user.username" name="username">
-      <input class="d-block mb-4 form-control" type="password" pInputText placeholder="Password" size="30" required [(ngModel)]="user.password" name="password">
-      <button pButton type="submit" label="Login" class="d-block primary-color w-100" [disabled]="!loginForm.form.valid"></button>
+      <ng-container *ngIf="!loading; else progressBar">
+        <input class="d-block mb-2 form-control" type="text" pInputText placeholder="Username" size="30" required [(ngModel)]="user.username" name="username">
+        <input class="d-block mb-4 form-control" type="password" pInputText placeholder="Password" size="30" required [(ngModel)]="user.password" name="password">
+        <button pButton type="submit" label="Login" class="d-block primary-color w-100" [disabled]="!loginForm.form.valid"></button>
+      </ng-container>
     </p-panel>
   </form>
 </div>
+
+<ng-template #progressBar>
+  <p-progressBar mode="indeterminate"></p-progressBar>
+</ng-template>

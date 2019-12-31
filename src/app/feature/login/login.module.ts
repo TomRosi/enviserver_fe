@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import {FormsModule} from "@angular/forms";
+import {ProgressBarModule} from "primeng/progressbar";
 
 
 @NgModule({
@@ -18,8 +19,9 @@ import {FormsModule} from "@angular/forms";
     ButtonModule,
     InputTextModule,
     PanelModule,
+    ProgressBarModule,
     RouterModule.forChild(routes),
-    FormsModule
+    FormsModule,
   ]
 })
 export class LoginModule { }
