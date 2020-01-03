@@ -1,7 +1,7 @@
 export interface UserInterface {
   id: number;
   username: string;
-  full_name: string;
+  fullName: string;
   password: string;
   year: string;
   role: object; //TODO: Type bit
