@@ -22,6 +22,9 @@ export class CoreAuth {
     // TODO: Delay 2000 simuluje dobu odpovědi z BE
     if (username === "test" && password === "test") {
       this.setCookie("FakeSessionIdFor." + username);
+      this.http.get<UserInterface>('/enviserver/users/' + 1).subscribe(userInfo => {
+        this.localSetUserInfo(userInfo);
+      });
       return of(true).pipe(delay(2000));
     } else {
       return of(false).pipe(delay(2000));
@@ -31,19 +34,13 @@ export class CoreAuth {
 
   logout(): Observable<boolean> {
     // TODO: Doplnit ve chvíli, kdy bude BE umět autentikaci uživatelů
+    this.localRemoveUserInfo();
     this.removeCookie();
     return of<any>(true);
   }
 
   public isAuthenticated(): boolean {
     return this.cookie.check(COOKIE_NAME) && this.cookie.get(COOKIE_NAME) !== undefined;
-  }
-
-  /**
-   * TODO: Refactor after REAL Api exists
-   */
-  userInfo(userId: number): Observable<UserInterface> {
-    return this.http.get<UserInterface>('/enviserver/users/' + userId);
   }
 
   /**
@@ -56,5 +53,17 @@ export class CoreAuth {
 
   private removeCookie() {
     this.cookie.delete(COOKIE_NAME, COOKIE_PATH);
+  }
+
+  private localSetUserInfo(userInfo: UserInterface) {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  }
+
+  public localGetUserInfo(): UserInterface {
+    return JSON.parse(localStorage.getItem('userInfo')) as UserInterface;
+  }
+
+  private localRemoveUserInfo() {
+    localStorage.removeItem('userInfo');
   }
 }

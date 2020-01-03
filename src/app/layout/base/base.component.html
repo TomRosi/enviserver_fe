@@ -4,8 +4,10 @@
       <div class="col-10">
         <h3 class="first justify-content-center align-items-center h-100">ENVI SERVER</h3>
       </div>
-      <div class="col-2">
-        user
+      <div class="col d-flex justify-content-end">
+        <p-menubar [model]="userMenu" [styleClass]="'border-0'">
+          <button pButton label="Logout" class="ui-button-secondary" icon="pi pi-sign-out" (click)="logout()"></button>
+        </p-menubar>
       </div>
     </div>
     <div class="row">
