@@ -1,55 +1,86 @@
-<div class="filter-wrap">
+<div class="filter-wrap filter-sidebar rounded-sm">
   <div class="row">
+  <div class="col">
+    <span class="title">Filters</span>
+  </div>
+</div>
+  <div class="row filter-section">
     <div class="col">
-      <h4>Filter</h4>
+      <span class="parameter">Temperature</span>
+      <span class="value-label d-flex">min {{temperatureRangeValues[0]}}°C max {{temperatureRangeValues[1]}}°C</span>
+      <p-slider [(ngModel)]="temperatureRangeValues" [range]="true" [min]="-70" [max]="70"></p-slider>
     </div>
   </div>
-  <div class="row title">
+  <div class="row filter-section">
     <div class="col">
-      <h5>Temperature</h5>
+      <span class="parameter">Date and time</span>
+      <p-accordion expandIcon="" collapseIcon="" styleClass="custom-accordion-slim">
+        <p-accordionTab *ngIf="!startDateTimeInput; else startDateTimeInputTemplate">
+          <p-header class="d-flex align-items-center justify-content-between">
+            <div class="header-text d-flex align-items-center flex-grow-1">
+              <div style="width: 4em;">From</div>
+              <div>{{startDateTime | date:'short'}}</div>
+            </div>
+            <p-button icon="pi pi-pencil" (onClick)="$event.stopPropagation();startDateTimeInput = true;"></p-button>
+          </p-header>
+          <p-calendar showTime="true" hourFormat="24" dateFormat="dd.mm.yy"
+                      [inline]="true" [styleClass]="'custom-date-picker-slim'"
+                      [(ngModel)]="startDateTime" [maxDate]="endDateTime"
+          ></p-calendar>
+        </p-accordionTab>
+        <p-accordionTab *ngIf="!endDateTimeInput; else endDateTimeInputTemplate">
+          <p-header class="d-flex align-items-center justify-content-between">
+            <div class="header-text d-flex align-items-center flex-grow-1">
+              <div style="width: 4em;">To</div>
+              <div>{{endDateTime | date:'short'}}</div>
+            </div>
+            <p-button icon="pi pi-pencil" (onClick)="$event.stopPropagation();endDateTimeInput = true;"></p-button>
+          </p-header>
+          <p-calendar showTime="true" hourFormat="24" dateFormat="dd.mm.yy"
+                      [inline]="true" [styleClass]="'custom-date-picker-slim'"
+                      [(ngModel)]="endDateTime" [minDate]="startDateTime" [maxDate]="now"
+          ></p-calendar>
+        </p-accordionTab>
+      </p-accordion>
     </div>
   </div>
-  <div class="row">
-    <div class="col filter">
-      <label for="fromTemperature">Lowest temperature</label>
-      <input type="number" pInputText id="fromTemperature" name="fromTemperature">
-    </div>
-    <div class="col filter">
-      <label for="fromTemperature">Highest temperature</label>
-      <input type="number" pInputText id="toTemperature" name="toTemperature">
-    </div>
-  </div>
-  <div class="row title">
+  <div class="row filter-section">
     <div class="col">
-      <h5>Date and time</h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col filter">
-      <p-calendar showTime="true" hourFormat="24" dateFormat="dd.mm.yy"></p-calendar>
-    </div>
-  </div>
-  <div class="row title">
-    <div class="col">
-      <h5>UUID</h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col filter">
-      <p-checkbox name="selectAllUuid" value="all" label="All"></p-checkbox>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col filter">
-      <p-dropdown [options]="uuidOptions" placeholder="Select name (UUID)"></p-dropdown>
+      <span class="parameter">UUID</span>
+      <div class="d-flex align-items-center flex-wrap">
+        <div class="mr-3">
+          <p-checkbox name="selectAllUuid" value="all" label="Select all" [(ngModel)]="selectAllUuid"></p-checkbox>
+        </div>
+        <div>
+          <p-dropdown [options]="uuidOptions" placeholder="Select name (UUID)" [disabled]="selectAllUuid.length > 0"></p-dropdown>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row buttons-group">
     <div class="col filter">
-      <button pButton type="reset" label="Reset"></button>
-    </div>
-    <div class="col filter">
-      <button pButton type="submit" label="Submit"></button>
+      <button pButton type="submit" label="Submit" class="mr-3 ui-button-success"></button>
+      <button pButton type="reset" label="Reset" class="ui-button-danger"></button>
     </div>
   </div>
 </div>
+
+<ng-template #startDateTimeInputTemplate>
+  <div class="d-flex date-time-input">
+    <div class="ui-inputgroup flex-grow-1">
+      <div class="ui-inputgroup-addon border-0 rounded-0 pr-0 text-left font-weight-bold" style="width: 5.5em; padding-left: 1em;">From</div>
+      <input type="text" #startDateTimeInputElement class="w-100 border-0" pInputText [value]="startDateTime | date:'short'">
+    </div>
+    <p-button icon="pi pi-check" (onClick)="startDateTimeInput = false;setStartDateTimeValues(startDateTimeInputElement.value);"></p-button>
+  </div>
+</ng-template>
+
+<ng-template #endDateTimeInputTemplate>
+  <div class="d-flex date-time-input">
+    <div class="ui-inputgroup flex-grow-1">
+      <div class="ui-inputgroup-addon border-0 rounded-0 pr-0 text-left font-weight-bold" style="width: 5.5em; padding-left: 1em;">To</div>
+      <input type="text" #endDateTimeInputElement class="w-100 border-0" pInputText [value]="endDateTime | date:'short'">
+    </div>
+    <p-button icon="pi pi-check" (onClick)="endDateTimeInput = false;setEndDateTimeValues(endDateTimeInputElement.value)"></p-button>
+  </div>
+</ng-template>

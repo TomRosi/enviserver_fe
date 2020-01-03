@@ -8,6 +8,9 @@ import {CalendarModule} from 'primeng/calendar';
 import {CheckboxModule} from 'primeng/checkbox';
 import {DropdownModule} from 'primeng/dropdown';
 import {ButtonModule} from 'primeng/button';
+import {SliderModule} from 'primeng/slider';
+import {FormsModule} from "@angular/forms";
+import {AccordionModule} from 'primeng/accordion';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import {ButtonModule} from 'primeng/button';
     CheckboxModule,
     DropdownModule,
     ButtonModule,
+    SliderModule,
+    FormsModule,
+    AccordionModule,
     RouterModule.forChild(routes)
   ]
 })

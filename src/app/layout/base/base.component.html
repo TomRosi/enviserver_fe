@@ -1,17 +1,17 @@
 <div class="d-flex flex-column h-100">
   <div class="container-fluid h-100">
     <div class="row">
-      <div class="col-10">
+      <div class="col">
         <h3 class="first justify-content-center align-items-center h-100">ENVI SERVER</h3>
       </div>
-      <div class="col d-flex justify-content-end">
+      <div class="col-md-6 d-flex justify-content-end">
         <p-menubar [model]="userMenu" [styleClass]="'border-0'">
           <button pButton label="Logout" class="ui-button-secondary" icon="pi pi-sign-out" (click)="logout()"></button>
         </p-menubar>
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-2 col-md-3 col-sm-4">
+      <div class="col-sm-12 col-md-5 col-lg-4 col-xl-3 filter-sidebar-column">
         <app-filter></app-filter>
       </div>
       <div class="col">

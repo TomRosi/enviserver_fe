@@ -1,0 +1,12 @@
+:host {
+  @media only screen and (min-width : 1042px) {
+    .filter-sidebar-column {
+      max-width: 300px;
+    }
+  }
+  @media only screen and (max-width : 1041px) {
+    .filter-sidebar-column {
+      min-width: 100%;
+    }
+  }
+}

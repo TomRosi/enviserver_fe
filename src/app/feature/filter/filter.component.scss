@@ -1,19 +1,65 @@
 :host {
-  .filter-wrap {
-    background-color: #fdffdc;
-    padding: 5px 10px 30px 10px;
-  }
-  .title {
-    margin-top: 1em;
-    h5 {
-      padding: 0;
-      margin: 0.5em 0 0 0;
+  .filter-sidebar {
+    font-variant: small-caps;
+    margin-bottom: 3em;
+    background-color: whitesmoke;
+    padding: 15px 15px;
+
+    .title {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .filter-section {
+      margin: 10px 0px 20px;
+      .col {
+        padding: 0;
+      }
+    }
+
+    .parameter {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .value-label {
+      font-size: 0.8em;
+      margin-bottom: 0.5em;
     }
   }
-  .filter label {
-    margin-bottom: 2px;
-  }
-  .buttons-group {
-    margin-top: 2em;
+}
+
+:host::ng-deep {
+  .custom-accordion-slim {
+    .ui-accordion-content-wrapper, .ui-accordion-content {
+      padding: 0;
+      border: 0;
+    }
+    .ui-accordion-header a {
+      padding: 0;
+      .header-text  {
+        padding: 0.5em 1em;
+      }
+    }
+    .date-time-input {
+      border: 1px solid #c8c8c8;
+      margin: 1px 0px 2px;
+
+    }
   }
 }
+
+:host::ng-deep {
+  .custom-date-picker-slim {
+    width: 100%;
+    min-width: 240px;
+    .ui-datepicker {
+      padding: 1.3em 0.5em;
+    }
+    .ui-datepicker-calendar td {
+      padding: 0;
+    }
+  }
+}
+
+
