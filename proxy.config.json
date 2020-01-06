@@ -12,13 +12,10 @@
     "changeOrigin": true
   },
   "/enviserver/sensors": {
-    "target": "http://localhost:3000",
+    "target": "http://localhost:8080",
     "secure": true,
     "logLevel": "info",
-    "changeOrigin": true,
-    "pathRewrite": {
-      "^/enviserver": ""
-    }
+    "changeOrigin": true
   },
   "/enviserver/users": {
     "target": "http://localhost:3000",

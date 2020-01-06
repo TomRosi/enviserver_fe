@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertsService} from "@app/feature/alerts/services/alerts.service";
-import {TableDataInterface} from "@app/feature/table/interfaces/table-data.interface";
+import { AlertsService} from "@app/feature/alerts/alerts.service";
+import {TableDataInterface} from "@app/feature/table/table-data.interface";
 import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-alerts',
   templateUrl: './alerts.component.html',
-  styleUrls: ['./alerts.component.scss']
 })
 export class AlertsComponent implements OnInit {
 

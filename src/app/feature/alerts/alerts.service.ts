@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MASTER_UUID} from "@app/constants/app.constants";
 import {Observable} from "rxjs";
-import {AlertsInterface} from "@app/feature/alerts/interfaces/alerts.interface";
+import {AlertsInterface} from "@app/feature/alerts/alerts.interface";
 
 @Injectable({
   providedIn: 'root'

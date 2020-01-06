@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MASTER_UUID} from "@app/constants/app.constants";
 import {Observable} from "rxjs";
-import {SensorsInterface} from "@app/feature/sensors/interfaces/sensorsInterface";
+import {SensorsInterface} from "@app/feature/sensors/sensorsInterface";
 
 @Injectable({
   providedIn: 'root'

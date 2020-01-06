@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {tap} from "rxjs/operators";
+import {FilterService} from "@app/feature/filter/filter.service";
+import {SensorsInterface} from "@app/feature/sensors/sensorsInterface";
 
 @Component({
   selector: 'app-filter',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class FilterComponent implements OnInit {
 
   uuidOptions: {label: string, value: any}[] = [
-    {label:'None', value:null},
+    {label:'None', value: null},
   ];
 
   temperatureRangeValues: number[] = [-70, 70];
@@ -20,9 +23,16 @@ export class FilterComponent implements OnInit {
   endDateTimeInput: boolean = false;
   selectAllUuid: [] = [];
 
-  constructor() { }
+  constructor(
+    private service: FilterService
+  ) {  }
 
   ngOnInit() {
+    this.service.getSensors().pipe(tap((res: SensorsInterface[]) => {
+      res.forEach(sensor => {
+        this.uuidOptions.push({label: sensor.name, value: sensor.uuid});
+      })
+    })).subscribe();
   }
 
   reset() {

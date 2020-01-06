@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TableDataInterface} from "@app/feature/table/interfaces/table-data.interface";
-import {SensorsService} from "@app/feature/sensors/services/sensors.service";
+import {TableDataInterface} from "@app/feature/table/table-data.interface";
+import {SensorsService} from "@app/feature/sensors/sensors.service";
 
 @Component({
   selector: 'app-sensors',

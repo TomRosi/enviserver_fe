@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TableDataInterface} from "@app/feature/table/interfaces/table-data.interface";
+import {TableDataInterface} from "@app/feature/table/table-data.interface";
 import {SortEvent} from "primeng";
 
 @Component({

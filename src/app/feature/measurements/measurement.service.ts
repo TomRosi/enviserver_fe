@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MASTER_UUID} from "@app/constants/app.constants";
-import {MeasurementsInterface} from "@app/feature/measurements/interfaces/measurementsInterface";
+import {MeasurementsInterface} from "@app/feature/measurements/measurementsInterface";
 import {Observable} from "rxjs";
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MeasurementService} from "@app/feature/measurements/services/measurement.service";
-import {TableDataInterface} from "@app/feature/table/interfaces/table-data.interface";
+import {MeasurementService} from "@app/feature/measurements/measurement.service";
+import {TableDataInterface} from "@app/feature/table/table-data.interface";
 
 @Component({
   selector: 'app-measurements',
