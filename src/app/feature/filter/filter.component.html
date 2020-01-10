@@ -4,7 +4,7 @@
       <span class="title">Filters</span>
     </div>
   </div>
-  <div class="row filter-section">
+  <div class="row filter-section" *ngIf="currentTab !== 'sensors'">
     <div class="col">
       <span class="parameter">Temperature</span>
       <span class="value-label d-flex">min {{temperatureRangeValues[0]}}°C max {{temperatureRangeValues[1]}}°C</span>
