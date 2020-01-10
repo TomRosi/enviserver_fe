@@ -8,7 +8,7 @@
     <div class="col">
       <span class="parameter">Temperature</span>
       <span class="value-label d-flex">min {{temperatureRangeValues[0]}}°C max {{temperatureRangeValues[1]}}°C</span>
-      <p-slider [(ngModel)]="temperatureRangeValues" [range]="true" [min]="-70" [max]="70"></p-slider>
+      <p-slider [(ngModel)]="temperatureRangeValues" [range]="true" [min]="defaultValues.temperatureRange.min" [max]="defaultValues.temperatureRange.max"></p-slider>
     </div>
   </div>
   <div class="row filter-section">

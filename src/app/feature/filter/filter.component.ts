@@ -17,7 +17,7 @@ export class FilterComponent implements OnInit {
     endDateTime: Date,
     selectedUUID: string,
   } = {
-    temperatureRange: {min: -70, max: 70},
+    temperatureRange: {min: -40, max: 40},
     startDateTime: new Date(0),
     endDateTime: new Date(),
     selectedUUID: null,
@@ -83,8 +83,8 @@ export class FilterComponent implements OnInit {
       this.hasParamsKey(filterValues,"maxTemperature") ? parseInt(this.getParamByKey(filterValues,"maxTemperature"), 10) : this.defaultValues.temperatureRange.max
     ];
 
-    this.startDateTime = this.hasParamsKey(filterValues,"afterTimestamp") ? this.getParamByKey(filterValues,"afterTimestamp") : this.defaultValues.startDateTime;
-    this.endDateTime = this.hasParamsKey(filterValues,"beforeTimestamp") ? this.getParamByKey(filterValues,"beforeTimestamp") : this.defaultValues.endDateTime;
+    this.startDateTime = this.hasParamsKey(filterValues,"afterTimestamp") ? new Date(this.getParamByKey(filterValues,"afterTimestamp")) : this.defaultValues.startDateTime;
+    this.endDateTime = this.hasParamsKey(filterValues,"beforeTimestamp") ? new Date(this.getParamByKey(filterValues,"beforeTimestamp")) : this.defaultValues.endDateTime;
     this.selectAllUuid = this.hasParamsKey(filterValues,"sensorUUID") ? this.getParamByKey(filterValues,"sensorUUID") : this.defaultValues.selectedUUID;
   }
 

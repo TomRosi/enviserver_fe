@@ -31,7 +31,6 @@ export class CoreAuth {
   }
 
   logout(): Observable<boolean> {
-    // TODO: Doplnit ve chvíli, kdy bude BE umět autentikaci uživatelů
     this.localRemoveUserInfo();
     this.removeCookie();
     return of<any>(true);
