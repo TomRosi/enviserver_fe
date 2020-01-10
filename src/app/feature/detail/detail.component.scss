@@ -1,0 +1,8 @@
+:host {
+  .row {
+    padding-top: 1.8em;
+    &:last-of-type {
+      padding-bottom: 1.8em;
+    }
+  }
+}

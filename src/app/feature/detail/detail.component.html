@@ -1,15 +1,133 @@
-<p-dialog header="Detail" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [baseZIndex]="10000">
-  <p>{{data | json}}</p>
-  <ng-container [ngSwitch]="currentTab">
-    <div *ngSwitchCase="'sensors'">
-      toto je sensor
+<p-dialog header="Detail"
+          [(visible)]="display"
+          [modal]="true"
+          [responsive]="true"
+          [style]="{width: '350px', minWidth: '200px'}"
+          [minY]="70"
+          [baseZIndex]="10000"
+          [closeOnEscape]="false"
+          [closable]="false"
+>
+  <ng-container [ngSwitch]="currentTab" *ngIf="data">
+    <div class="row no-gutters">
+      <div class="col-3">
+        <span class="ui-float-label">
+          <input id="data_id" type="text" pInputText [(ngModel)]="data.id" [ngStyle]="{width: '100%'}">
+          <label for="data_id">ID</label>
+        </span>
+      </div>
+      <div class="col no-gutters">
+        <span class="ui-float-label">
+          <input id="data_name" type="text" pInputText [(ngModel)]="data.name" [ngStyle]="{width: '100%'}">
+          <label for="data_name">Name</label>
+        </span>
+      </div>
     </div>
-    <div *ngSwitchCase="'alerts'">
-      toto je alert
-    </div>
-    <div *ngSwitchCase="'measurements'">
-      toto je measuerements
-    </div>
+
+    <ng-container *ngSwitchCase="'sensors'">
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+          <input id="data_uuid" type="text" pInputText [(ngModel)]="data.sensorUUID" [ngStyle]="{width: '100%'}">
+          <label for="data_uuid">Sensor UUID</label>
+        </span>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_location" type="text" pInputText [(ngModel)]="data.location" [ngStyle]="{width: '100%'}">
+            <label for="data_location">Sensor Location</label>
+          </span>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_min_temperature" type="text" pInputText [(ngModel)]="data.minTemperature" [ngStyle]="{width: '100%'}">
+            <label for="data_min_temperature">Min Temperature</label>
+          </span>
+        </div>
+        <div class="col no-gutters">
+          <span class="ui-float-label">
+            <input id="data_max_temperature" type="text" pInputText [(ngModel)]="data.maxTemperature" [ngStyle]="{width: '100%'}">
+            <label for="data_max_temperature">Max Temperature</label>
+          </span>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'alerts'">
+      <div class="row no-gutters">
+        <div class="col">
+            <span class="ui-float-label">
+              <input id="data_created_on_alerts" type="text" pInputText [(ngModel)]="data.createdOn" [ngStyle]="{width: '100%'}">
+              <label for="data_created_on_alerts">Created On</label>
+            </span>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_modified_on_alerts" type="text" pInputText [(ngModel)]="data.modifiedOn" [ngStyle]="{width: '100%'}">
+            <label for="data_modified_on_alerts">Modified On</label>
+          </span>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_temperature_alerts" type="text" pInputText [(ngModel)]="data.temperature" [ngStyle]="{width: '100%'}">
+            <label for="data_temperature_alerts">Temperature</label>
+          </span>
+        </div>
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_low_temperature" type="text" pInputText [(ngModel)]="data.lowTemperature" [ngStyle]="{width: '100%'}">
+            <label for="data_high_temperature">Low</label>
+          </span>
+        </div>
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_high_temperature" type="text" pInputText [(ngModel)]="data.highTemperature" [ngStyle]="{width: '100%'}">
+            <label for="data_high_temperature">High</label>
+          </span>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'measurements'">
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_created_on_measurements" type="text" pInputText [(ngModel)]="data.createdOn" [ngStyle]="{width: '100%'}">
+            <label for="data_created_on_measurements">Created On</label>
+          </span>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_modified_on_measurements" type="text" pInputText [(ngModel)]="data.modifiedOn" [ngStyle]="{width: '100%'}">
+            <label for="data_modified_on_measurements">Modified On</label>
+          </span>
+        </div>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-4">
+          <span class="ui-float-label">
+            <input id="data_status" type="text" pInputText [(ngModel)]="data.status" [ngStyle]="{width: '100%'}">
+            <label for="data_status">Status</label>
+          </span>
+        </div>
+        <div class="col">
+          <span class="ui-float-label">
+            <input id="data_temperature" type="text" pInputText [(ngModel)]="data.temperature" [ngStyle]="{width: '100%'}">
+            <label for="data_temperature">Temperature</label>
+          </span>
+        </div>
+      </div>
+    </ng-container>
   </ng-container>
   <p-footer>
     <button type="button" pButton icon="pi pi-check" (click)="save()" label="Save" class="ui-button-success"></button>

@@ -13,11 +13,10 @@ export class MeasurementsComponent implements OnInit {
   cols: {field: string, header: string, width: string}[] = [
     // {field: 'id', header:  'ID'},
     // {field: 'createdOn', header:  'Created on'},
-    {field: 'name', header:  'Name', width: '24%'},
-    {field: 'temperature', header:  'Temperature', width: '15%'},
-    {field: 'status', header:  'Status', width: '15%'},
-    {field: 'modifiedOn', header:  'Modified on', width: '20%'},
-    {field: 'timestamp', header:  'Time stand', width: '20%'}
+    {field: 'name', header:  'Name', width: '28%'},
+    {field: 'temperature', header:  'Temperature', width: '20%'},
+    {field: 'status', header:  'Status', width: '20%'},
+    {field: 'modifiedOn', header:  'Modified on', width: '25%'},
   ];
 
   constructor(

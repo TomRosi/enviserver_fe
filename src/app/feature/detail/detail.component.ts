@@ -17,6 +17,8 @@ export class DetailComponent implements OnInit {
   @Input('currentTab') currentTab: Observable<string>;
   @Output() displayChange = new EventEmitter();
 
+  createdOnInput: boolean = false;
+
   constructor(
     private stateManagementService: StateManagementService,
   ) { }
@@ -34,5 +36,9 @@ export class DetailComponent implements OnInit {
   save() {
     console.log("Will save the detail");
     this.hideDialog();
+  }
+
+  getDateObject(date: string): Date {
+    return new Date(date);
   }
 }

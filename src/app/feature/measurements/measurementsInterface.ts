@@ -5,5 +5,4 @@ export interface MeasurementsInterface {
   temperature: number;
   status: string;
   modifiedOn: Date;
-  timestamp: number;
 }

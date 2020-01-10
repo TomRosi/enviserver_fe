@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   // TODO: Umožnit na BE příjmat sort operace
   // TODO: Implementovat načítání dle filtrů se sortováním
   lazyLoad(event: SortEvent) {
-    // console.log(event);
+    console.log(event);
   }
 
   showDetail(row: any) {

@@ -18,7 +18,7 @@
         <p-accordionTab *ngIf="!startDateTimeInput; else startDateTimeInputTemplate">
           <p-header class="d-flex align-items-center justify-content-between">
             <div class="header-text d-flex align-items-center flex-grow-1">
-              <div style="width: 4em;">From</div>
+              <div style="width: 3.8em;">From</div>
               <div>{{startDateTime | date:'short'}}</div>
             </div>
             <p-button icon="pi pi-pencil" (onClick)="$event.stopPropagation();startDateTimeInput = true;"></p-button>
@@ -31,7 +31,7 @@
         <p-accordionTab *ngIf="!endDateTimeInput; else endDateTimeInputTemplate">
           <p-header class="d-flex align-items-center justify-content-between">
             <div class="header-text d-flex align-items-center flex-grow-1">
-              <div style="width: 4em;">To</div>
+              <div style="width: 3.8em;">To</div>
               <div>{{endDateTime | date:'short'}}</div>
             </div>
             <p-button icon="pi pi-pencil" (onClick)="$event.stopPropagation();endDateTimeInput = true;"></p-button>

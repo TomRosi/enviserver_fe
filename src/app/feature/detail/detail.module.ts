@@ -6,6 +6,8 @@ import {routes} from "@app/feature/table/table.routes";
 import {FormsModule} from "@angular/forms";
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from "primeng/button";
+import {InputTextModule} from "primeng/inputtext";
+import {CalendarModule} from "primeng/calendar";
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import {ButtonModule} from "primeng/button";
     FormsModule,
     DialogModule,
     RouterModule.forChild(routes),
-    ButtonModule
+    ButtonModule,
+    InputTextModule,
+    CalendarModule
   ]
 })
 export class DetailModule { }
