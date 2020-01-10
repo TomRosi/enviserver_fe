@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailComponent } from './detail.component';
 import { RouterModule } from '@angular/router';
-import { TableModule as PrimeNgTableModule} from 'primeng/table';
-import {CheckboxModule} from 'primeng/checkbox';
 import {routes} from "@app/feature/table/table.routes";
 import {FormsModule} from "@angular/forms";
 import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from "primeng/button";
 
 
 @NgModule({
@@ -17,10 +16,9 @@ import {DialogModule} from 'primeng/dialog';
   imports: [
     CommonModule,
     FormsModule,
-    PrimeNgTableModule,
-    CheckboxModule,
     DialogModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ButtonModule
   ]
 })
 export class DetailModule { }

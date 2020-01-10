@@ -6,6 +6,7 @@ import { TableModule as PrimeNgTableModule} from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
 import {routes} from "@app/feature/table/table.routes";
 import {FormsModule} from "@angular/forms";
+import {DetailModule} from "@app/feature/detail/detail.module";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     PrimeNgTableModule,
     CheckboxModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    DetailModule
   ]
 })
 export class TableModule { }

@@ -2,6 +2,7 @@ import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, On
 import {ActivatedRoute, ActivationStart, Router, RouterOutlet, UrlSegment} from "@angular/router";
 import {TabView} from "primeng/tabview";
 import { Location } from '@angular/common';
+import {StateManagementService} from "@app/core/state-management.service";
 
 
 @Component({
@@ -20,7 +21,8 @@ export class TabsComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private router: Router,
     private ref: ChangeDetectorRef,
-    private location: Location
+    private location: Location,
+    private stateManagementService: StateManagementService,
   ) {}
 
   ngOnInit() {}
@@ -41,6 +43,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
     } else {
       this.location.replaceState('/tabs/' + this.tabView.tabs[this.selectedTabIndex].header.toLocaleLowerCase());
     }
+    this.stateManagementService.currentTab.emit(this.tabView.tabs[this.selectedTabIndex].header.toLocaleLowerCase());
   }
 
 }

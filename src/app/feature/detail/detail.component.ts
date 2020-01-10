@@ -1,21 +1,38 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TableDataInterface} from "@app/feature/table/table-data.interface";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {SensorsInterface} from "@app/feature/sensors/sensorsInterface";
+import {AlertsInterface} from "@app/feature/alerts/alerts.interface";
+import {MeasurementsInterface} from "@app/feature/measurements/measurementsInterface";
+import {Observable} from "rxjs";
+import {StateManagementService} from "@app/core/state-management.service";
 
 @Component({
-  selector: 'app-table-view',
+  selector: 'app-dialog-view',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
 
-  @Input('tableData') tableData: TableDataInterface | null;
-  display: boolean = false;
+  @Input('data') data: SensorsInterface | AlertsInterface | MeasurementsInterface;
+  @Input('display') display: boolean;
+  @Input('currentTab') currentTab: Observable<string>;
+  @Output() displayChange = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private stateManagementService: StateManagementService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.stateManagementService.currentTab.subscribe(currentTab => {
+      this.currentTab = currentTab;
+    });
+  }
 
-  showDialog() {
-    this.display = true;
+  hideDialog() {
+    this.displayChange.emit(false);
+  }
+
+  save() {
+    console.log("Will save the detail");
+    this.hideDialog();
   }
 }

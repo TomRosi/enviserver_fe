@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { TableComponent } from '@app/feature/table/table.component';
+import {DetailComponent} from "@app/feature/detail/detail.component";
 
 export const routes: Routes = [
   {
     path: '',
-    component: TableComponent,
+    component: DetailComponent,
   }
 ];

@@ -1,4 +1,4 @@
-<p-table [value]="tableData.data$ | async" [lazy]="true" (sortFunction)="sort($event)" [paginator]="true" [rows]="10">
+<p-table [value]="tableData.data$ | async" [lazy]="true" (onLazyLoad)="lazyLoad($event)" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header">
     <tr>
       <th>
@@ -13,7 +13,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-data>
-    <tr>
+    <tr (click)="showDetail(data)" style="cursor: pointer;">
       <td>
         <p-checkbox></p-checkbox>
       </td>
@@ -23,3 +23,5 @@
     </tr>
   </ng-template>
 </p-table>
+
+<app-dialog-view [data]="selectedDetailData" [(display)]="showDetailDialog" [currentTab]=""></app-dialog-view>
