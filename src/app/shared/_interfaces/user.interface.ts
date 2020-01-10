@@ -3,6 +3,6 @@ export interface UserInterface {
   username: string;
   fullName: string;
   password: string;
-  year: string;
+  year: number;
   role: object; //TODO: Type bit
 }

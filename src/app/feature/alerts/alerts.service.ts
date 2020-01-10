@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MASTER_UUID} from "@app/constants/app.constants";
 import {Observable} from "rxjs";
 import {AlertsInterface} from "@app/feature/alerts/alerts.interface";
+import {StateManagementService} from "@app/core/state-management.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +9,10 @@ import {AlertsInterface} from "@app/feature/alerts/alerts.interface";
 export class AlertsService {
 
   constructor(
-    private http: HttpClient
+    private stateManagementService: StateManagementService,
   ) { }
 
   getAlerts(): Observable<AlertsInterface[]> {
-    return this.http.get<AlertsInterface[]>('/enviserver/alerts', {
-      headers: new HttpHeaders().set("UUID", MASTER_UUID)
-    });
+    return this.stateManagementService.filteredData;
   }
 }

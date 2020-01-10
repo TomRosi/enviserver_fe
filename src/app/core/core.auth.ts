@@ -4,7 +4,7 @@ import {CookieService} from 'ngx-cookie-service';
 import { COOKIE_NAME, COOKIE_PATH } from '@app/shared/_constants/app.constants';
 import {Injectable} from "@angular/core";
 import {UserInterface} from "@app/shared/_interfaces/user.interface";
-import {delay} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -17,19 +17,17 @@ export class CoreAuth {
   ) {}
 
   login(username: string, password: string): Observable<boolean> {
-    // TODO: Předělat ve chvíli, kdy bude BE umět autentikaci uživatelů
-    // Teď to povolí test/test uživatele
-    // TODO: Delay 2000 simuluje dobu odpovědi z BE
-    if (username === "test" && password === "test") {
-      this.setCookie("FakeSessionIdFor." + username);
-      this.http.get<UserInterface>('/enviserver/users/' + 1).subscribe(userInfo => {
-        this.localSetUserInfo(userInfo);
-      });
-      return of(true).pipe(delay(2000));
-    } else {
-      return of(false).pipe(delay(2000));
-    }
-
+    return this.http.post<UserInterface>('/enviserver/login', {username: username, password: password})
+      .pipe(
+        map(userInfo => {
+          if (userInfo === null) {
+            return false;
+          }
+          this.setCookie(userInfo.id.toString());
+          this.localSetUserInfo(userInfo);
+          return true;
+        })
+      );
   }
 
   logout(): Observable<boolean> {
@@ -60,6 +58,7 @@ export class CoreAuth {
   }
 
   public localGetUserInfo(): UserInterface {
+    console.log(localStorage.getItem('userInfo'))
     return JSON.parse(localStorage.getItem('userInfo')) as UserInterface;
   }
 

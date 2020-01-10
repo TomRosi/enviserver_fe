@@ -1,9 +1,9 @@
 <div class="filter-wrap filter-sidebar rounded-sm">
   <div class="row">
-  <div class="col">
-    <span class="title">Filters</span>
+    <div class="col">
+      <span class="title">Filters</span>
+    </div>
   </div>
-</div>
   <div class="row filter-section">
     <div class="col">
       <span class="parameter">Temperature</span>
@@ -48,19 +48,16 @@
     <div class="col">
       <span class="parameter">UUID</span>
       <div class="d-flex align-items-center flex-wrap">
-        <div class="mr-3">
-          <p-checkbox name="selectAllUuid" value="all" label="Select all" [(ngModel)]="selectAllUuid"></p-checkbox>
-        </div>
         <div>
-          <p-dropdown [options]="uuidOptions" placeholder="Select name (UUID)" [disabled]="selectAllUuid.length > 0"></p-dropdown>
+          <p-dropdown [options]="uuidOptions" placeholder="Select name (UUID)" [(ngModel)]="selectAllUuid"></p-dropdown>
         </div>
       </div>
     </div>
   </div>
   <div class="row buttons-group">
     <div class="col filter">
-      <button pButton type="submit" label="Submit" class="mr-3 ui-button-success"></button>
-      <button pButton type="reset" label="Reset" class="ui-button-danger"></button>
+      <button pButton type="submit" label="Submit" (click)="submit()" class="mr-3 ui-button-success"></button>
+      <button pButton type="reset" label="Reset" (click)="reset()" class="ui-button-danger"></button>
     </div>
   </div>
 </div>

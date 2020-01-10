@@ -10,6 +10,7 @@ import {BaseModule} from "@app/layout/base/base.module";
 import {AuthGuard} from "@app/core/auth.guard";
 import {CoreAuth} from "@app/core/core.auth";
 import {CookieService} from "ngx-cookie-service";
+import {StateManagementService} from "@app/core/state-management.service";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {CookieService} from "ngx-cookie-service";
     CookieService,
     CoreAuth,
     AuthGuard,
+    StateManagementService,
   ],
   bootstrap: [AppComponent]
 })

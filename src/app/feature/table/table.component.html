@@ -1,4 +1,4 @@
-<p-table [value]="tableData.data$ | async" [lazy]="true" (sortFunction)="sort($event)" [paginator]="true"]>
+<p-table [value]="tableData.data$ | async" [lazy]="true" (sortFunction)="sort($event)" [paginator]="true" [rows]="10">
   <ng-template pTemplate="header">
     <tr>
       <th>

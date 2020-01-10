@@ -17,13 +17,10 @@
     "logLevel": "info",
     "changeOrigin": true
   },
-  "/enviserver/users": {
-    "target": "http://localhost:3000",
+  "/enviserver/login": {
+    "target": "http://localhost:8080",
     "secure": true,
     "logLevel": "info",
-    "changeOrigin": true,
-    "pathRewrite": {
-      "^/enviserver": ""
-    }
+    "changeOrigin": true
   }
 }

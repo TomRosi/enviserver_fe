@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MASTER_UUID} from "@app/constants/app.constants";
 import {MeasurementsInterface} from "@app/feature/measurements/measurementsInterface";
 import {Observable} from "rxjs";
+import {StateManagementService} from "@app/core/state-management.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +9,10 @@ import {Observable} from "rxjs";
 export class MeasurementService {
 
   constructor(
-    private http: HttpClient
+    private stateManagementService: StateManagementService,
   ) { }
 
   getMeasurements(): Observable<MeasurementsInterface[]> {
-    return this.http.get<MeasurementsInterface[]>('/enviserver/measurements', {
-      headers: new HttpHeaders().set("UUID", MASTER_UUID)
-    });
+    return this.stateManagementService.filteredData;
   }
 }

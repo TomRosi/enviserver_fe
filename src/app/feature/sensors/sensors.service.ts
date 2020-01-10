@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {MASTER_UUID} from "@app/constants/app.constants";
 import {Observable} from "rxjs";
 import {SensorsInterface} from "@app/feature/sensors/sensorsInterface";
+import {StateManagementService} from "@app/core/state-management.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SensorsService {
-
   constructor(
-    private http: HttpClient
+    private stateManagementService: StateManagementService,
   ) { }
 
   getSensors(): Observable<SensorsInterface[]> {
-    return this.http.get<SensorsInterface[]>('/enviserver/sensors', {
-      headers: new HttpHeaders().set("UUID", MASTER_UUID)
-    });
+    return this.stateManagementService.filteredData;
   }
 }
